@@ -33,9 +33,10 @@ def configure_settings(options):
                 'test.ambiguous2',
             ),
             SITE_ID=1,
-            TEST_RUNNER='django.test.simple.DjangoTestSuiteRunner',
             TEST_ROOT=join(dirname(__file__), 'test', 'generic', 'tests'),
         )
+        if django.VERSION[:3] < (1, 8, 0):
+            params['TEST_RUNNER'] = 'django.test.simple.DjangoTestSuiteRunner',
 
         # Force the use of timezone aware datetime and change Django's warning to
         # be treated as errors.
