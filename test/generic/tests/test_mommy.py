@@ -318,7 +318,7 @@ class MommyCreatesAssociatedModels(TestCase):
 
     def test_allow_create_fkey_related_model(self):
         try:
-            person = mommy.make(Person, dog_set=[mommy.prepare(Dog), mommy.prepare(Dog)])
+            person = mommy.make(Person, dog_set=[mommy.make(Dog), mommy.make(Dog)])
         except TypeError:
             self.fail('type error raised')
 
